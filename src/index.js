@@ -27,23 +27,15 @@ class Sorter {
 
   sort(indices) {
     // your implementation
+      var i;
       var testSortArray = [];
-      for(var i = 0; i < indices.length; i++){
-          testSortArray.push(this.elements[i]);
+      indices.sort(function (x, y) {return x-y;})
+      for(i = 0; i < indices.length; i++){
+          testSortArray.push(this.elements[indices[i]]);
       }
-      for(i = 0; i < testSortArray.length; i++){
-          var min = i;
-          for (var j = i + 1; j < testSortArray.length; j++){
-              if(testSortArray[j] < testSortArray[min]){
-                  min = j;
-              }
-          }
-          var k = testSortArray[min];
-          testSortArray[min] = testSortArray[i];
-          testSortArray[i] = k;
-      }
+      testSortArray.sort(function (x, y) {return x-y;});
       for(i = 0; i < testSortArray.length; i++) {
-          this.elements.splice(indices[i], 1, testSortArray[i]);
+          this.elements[indices[i]] = testSortArray[i];
       }
   }
 
